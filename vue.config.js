@@ -11,7 +11,7 @@ module.exports = {
     config.entry['demo.component'] = './src/components/Demo.vue' 
     config.output = {
       filename: 'js/demo.component.js',
-      library: 'demoComponent',
+      library: 'commonComponent',
       libraryTarget: 'umd',
       umdNamedDefine: true
     }
