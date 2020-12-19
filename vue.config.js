@@ -6,15 +6,23 @@ module.exports = {
       filename: 'index.html'
     }
   },
-  configureWebpack: () => {
-    return {
-      entry: './src/components/Demo.vue',
-      output: {
-        filename: 'js/demo.component.js',
-        library: 'demoComponent',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
-      }
+  configureWebpack: (config) => {
+    console.log('config.entry', config.entry)
+    config.entry['demo.component'] = './src/components/Demo.vue' 
+    config.output = {
+      filename: 'js/demo.component.js',
+      library: 'demoComponent',
+      libraryTarget: 'umd',
+      umdNamedDefine: true
     }
+    // return {
+    //   entry: './src/components/Demo.vue',
+    //   output: {
+    //     filename: 'js/demo.component.js',
+    //     library: 'demoComponent',
+    //     libraryTarget: 'umd',
+    //     umdNamedDefine: true
+    //   }
+    // }
   }
 }
