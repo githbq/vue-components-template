@@ -25,7 +25,7 @@ export default {
     async loadDynamic() {
       const res = await axios.get(this.url)
       this.execute(res.data)
-      const component = window.commonComponent.default
+      const component = window.XDinamicCommonComponent.default
       return {
         name: 'XDynamicComponent-' + (component.name || 'temp'),
         component
