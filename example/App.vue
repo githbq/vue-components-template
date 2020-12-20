@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Widget url="js/demo.component.js" />
+    <Widget src="js/demo.component.js" />
   </div>
 </template>
 

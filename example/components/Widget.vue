@@ -7,7 +7,7 @@ import axios from 'axios'
 export default {
   name: 'mPaaS-Widget',
   props: {
-    url: {
+    src: {
       type: String,
       required: true
     }
@@ -23,7 +23,7 @@ export default {
       eval(jsContent)
     },
     async loadDynamic() {
-      const res = await axios.get(this.url)
+      const res = await axios.get(this.src)
       this.execute(res.data)
       const component = window.XDinamicCommonComponent.default
       return {
