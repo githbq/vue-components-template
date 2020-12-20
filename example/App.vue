@@ -17,7 +17,7 @@ export default {
       const res = await axios.get('js/demo.component.js')
       eval(res.data)
       const DemoComponent = window.commonComponent.default
-      return { name: 'Demo', component: DemoComponent }
+      return { name: DemoComponent.name || 'Demo', component: DemoComponent }
     },
     async dynamicComponentRender() {
       const { name, component } = await this.loadDynamic()
