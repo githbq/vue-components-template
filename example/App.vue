@@ -1,20 +1,32 @@
 <template>
-    <Demo></Demo>
+  <div>
+    <component :is="componentName" />
+  </div>
 </template>
 
 <script>
-  import Demo from '../src/components/Demo.vue'
-  export default {
-    components: {
-      Demo
-    },
-    data() {
-      return {}
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      componentName: 'div'
     }
+  },
+  methods: {
+    async loadDynamic() {
+      const res = await axios.get('js/demo.component.js')
+      eval(res.data)
+      const DemoComponent = window.commonComponent.default
+      return { name: 'Demo', component: DemoComponent }
+    },
+    async dynamicComponentRender() {
+      const { name, component } = await this.loadDynamic()
+      this.$options.components[name] = component
+      this.componentName = name
+    }
+  },
+  async mounted() {
+    this.dynamicComponentRender()
   }
+}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

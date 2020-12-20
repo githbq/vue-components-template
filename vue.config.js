@@ -9,8 +9,10 @@ module.exports = {
   configureWebpack: (config) => {
     console.log('config.entry', config.entry)
     config.entry['demo.component'] = './src/components/Demo.vue' 
+    console.log('config.output',config.output)
     config.output = {
-      filename: 'js/demo.component.js',
+      ...config.output,
+      filename: 'js/[name].js',
       library: 'commonComponent',
       libraryTarget: 'umd',
       umdNamedDefine: true
